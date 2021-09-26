@@ -6,7 +6,7 @@ use App\Register;
 use App\Person;
 
 $register = new Register();
-if (isset($_POST["name"]) && isset($_POST["surname"]) && isset($_POST["personId"]))
+if (isset($_POST["name"]) && isset($_POST["surname"]) && isset($_POST["personId"]) && isset($_POST["info"]))
 {
     $register->add(new Person($_POST["name"], $_POST["surname"], $_POST["personId"], $_POST["info"]));
     header("Location: index.php");
