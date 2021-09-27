@@ -48,20 +48,15 @@ class CSVStorage implements Storage
             $persons = [];
             while (($row = fgetcsv($fileRead, 1000, ";")) !== false)
             {
-                $persons[] = new Person(...$row);
-            }
-            for ($i = 0; $i < count($persons); $i++)
-            {
-                if ($persons[$i]->getPersonId() === $person->getPersonId())
+                if ($row[2] !== $person->getPersonId())
                 {
-                    unset($persons[$i]);
+                    $persons[] = $row;
                 }
             }
             $fileWrite = fopen($this->fileName, "w");
-            /** @var Person $person */
             foreach ($persons as $person)
             {
-                fputcsv($fileWrite, $person->toArray(), ";");
+                fputcsv($fileWrite, $person, ";");
             }
             fclose($fileWrite);
             fclose($fileRead);
