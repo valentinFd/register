@@ -6,17 +6,7 @@ class Person
 {
     private string $name;
 
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
     private string $surname;
-
-    public function getSurname(): string
-    {
-        return $this->surname;
-    }
 
     private string $personId;
 
@@ -27,11 +17,6 @@ class Person
 
     private string $info;
 
-    public function getInfo(): string
-    {
-        return $this->info;
-    }
-
     public function __construct(string $name, string $surname, string $personId, string $info = "")
     {
         $this->name = $name;
@@ -40,8 +25,8 @@ class Person
         $this->info = $info;
     }
 
-    public static function getPropertyNames(): array
+    public function toArray(): array
     {
-        return array_keys(get_class_vars(__CLASS__));
+        return get_object_vars($this);
     }
 }
