@@ -6,7 +6,7 @@ use App\Person;
 use App\Storage\CSVStorage;
 use App\Storage\JSONStorage;
 
-if (isset($_POST["add"]))
+if (isset($_POST["add"]) && isset($_POST["storage"]))
 {
     if ($_POST["name"] !== "" && $_POST["surname"] !== "" && $_POST["personId"] !== "")
     {
@@ -23,7 +23,7 @@ if (isset($_POST["add"]))
         header("Location: /");
     }
 }
-if (isset($_POST["deletePersonId"]))
+if (isset($_POST["deletePersonId"]) && isset($_POST["storage"]))
 {
     switch ($_POST["storage"])
     {
@@ -97,7 +97,7 @@ if (isset($_POST["deletePersonId"]))
                 <button type="submit" class="btn btn-primary">Search</button>
             </form>
             <?php
-            if (isset($_GET["search"])):
+            if (isset($_GET["search"]) && isset($_GET["storage"])):
                 switch ($_GET["storage"])
                 {
                     case "csv":
