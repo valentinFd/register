@@ -89,8 +89,7 @@ if (isset($_GET["personId"]))
         echo "</table>";
         echo "<form method='post'>";
         echo "<div class='form-group'>";
-        echo "<input type='hidden' name='deletePersonId' value={$_GET["personId"]}>";
-        echo "<button type='submit' class='btn btn-primary'>Delete</button>";
+        echo "<button type='submit' class='btn btn-primary' name='deletePersonId' value={$_GET["personId"]}>Delete</button>";
         echo "</div>";
         echo "</form>";
     }
